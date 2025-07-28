@@ -1,0 +1,1 @@
+.//p[contains(@class, 'text_type_digits') and contains(text(), '#0272104')]
