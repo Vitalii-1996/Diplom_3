@@ -1,0 +1,13 @@
+MAIN_PAGE_URL = 'https://stellarburgers.nomoreparties.site/'
+LOGIN_PAGE_URL = 'https://stellarburgers.nomoreparties.site/login'
+RESET_PASSWORD_URL = 'https://stellarburgers.nomoreparties.site/forgot-password'
+MY_ACCOUNT_URL = 'https://stellarburgers.nomoreparties.site/account/profile'
+ORDER_FEED_URL = 'https://stellarburgers.nomoreparties.site/feed'
+
+TEST_EMAIL = 'qwert1234@mail.com'
+TEST_PASSWORD = '87654321QWERTY'
+
+INGREDIENT_COUNT = 14
+BUN_COUNT = 2
+
+ORDER_ID_PLACEHOLDER = '9999'
