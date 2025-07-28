@@ -2,9 +2,11 @@ from pages.reset_password_page import ResetPasswordPage
 from helpers import generate_random_email
 import pytest
 import data
+import allure
 
 
 class TestResetPasswordPage:
+    @allure.title('Test input email and click reset password')
     @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_reset_password_success_flow(self, driver):
         reset_password_page = ResetPasswordPage(driver)
@@ -15,6 +17,7 @@ class TestResetPasswordPage:
 
         assert reset_password_page.check_reset_password_label_present()
 
+    @allure.step('Test show password button activate input field')
     @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_click_show_password(self, reset_password):
         login_page = ResetPasswordPage(reset_password)

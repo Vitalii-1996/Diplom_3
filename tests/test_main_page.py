@@ -3,9 +3,11 @@ from helpers import random_bun_index, random_ingerdient_index
 import pytest
 import data
 import random
+import allure
 
 
 class TestMainPage:
+    @allure.title('Test ingredient popup modal displayed')
     @pytest.mark.parametrize(
             'ingredient_index',
             [random.randint(0,data.INGREDIENT_COUNT)]
@@ -17,6 +19,7 @@ class TestMainPage:
         main_pages.click_ingredient(ingredient_index)
         assert main_pages.check_popup_modal_header()
 
+    @allure.title('Test close ingredient popup modal')
     @pytest.mark.parametrize(
             'ingredient_index',
             [random.randint(0,data.INGREDIENT_COUNT)]
@@ -29,6 +32,8 @@ class TestMainPage:
         main_pages.click_close_modal_button()
         assert main_pages.check_modal_close()
 
+    @allure.title('Test ingredient counter')
+    @allure.description('Drag ingredient to the busket and check that ingredient counter increase')
     @pytest.mark.parametrize(
             'ingredient_index',
             [random_ingerdient_index()]
@@ -42,6 +47,7 @@ class TestMainPage:
         count_after = main_pages.get_ingredient_count(ingredient_index) 
         assert count_after > count_before
 
+    @allure.step('Test place new order')
     @pytest.mark.parametrize(
             'bun_index, ingredients',
             [

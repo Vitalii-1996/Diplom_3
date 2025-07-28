@@ -7,6 +7,7 @@ from locators.main_page_locators import MainPageLocators
 import pytest
 import data
 
+
 @pytest.fixture
 def driver(request):
     mode = request.param

@@ -5,9 +5,11 @@ from helpers import random_bun_index, random_ingerdient_index
 from locators.order_feed_page_locators import OrderFeedPageLocators
 import pytest
 import data
+import allure
 
 
 class TestAccountPage:
+    @allure.title('Test order details modal open')
     @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_order_feed_modal_details(self, driver):
         order_feed = OrderFeedPage(driver)   
@@ -15,6 +17,10 @@ class TestAccountPage:
         order_feed.click_latest_order()
         assert order_feed.check_order_composition_preset()
 
+    @allure.title('Test user order present in order feed')
+    @allure.description(
+        'Check that order from user order history is displayed on the order feed page.'
+    )
     @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_order_feed_order_from_history_present(self, login_user):
         main_page = MainPage(login_user)
@@ -25,6 +31,8 @@ class TestAccountPage:
         order_feed = OrderFeedPage(login_user)
         assert order_feed.check_displayed_order_feed(order_id)
 
+    @allure.title('Test new order increase counter')
+    @allure.description('Check counter daily and total counter.')
     @pytest.mark.parametrize(
             'counter_locator',
             [OrderFeedPageLocators.ORDER_FEED_TOTAL_COUNTER, OrderFeedPageLocators.ORDER_FEED_DAILY_COUNTER]
@@ -47,6 +55,7 @@ class TestAccountPage:
         count_after = order_feed.get_text_from_element(counter_locator)   
         assert count_after > count_before
 
+    @allure.title('Test new order is displayed in inprogress section')
     @pytest.mark.parametrize(
             'bun_index, ingredients',
             [
@@ -60,4 +69,3 @@ class TestAccountPage:
         order_id = main_pages.create_new_order(bun_index, ingredients)
         order_feed.go_to_url(data.ORDER_FEED_URL)
         assert order_feed.check_displayed_order_in_progress(order_id)
-        

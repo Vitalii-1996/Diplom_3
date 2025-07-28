@@ -5,9 +5,11 @@ from pages.order_feed_page import OrderFeedPage
 from pages.reset_password_page import ResetPasswordPage
 import pytest
 import data
+import allure
 
 
 class TestRedirects:
+    @allure.title('Test redirect from main page to account page')
     @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_redirect_to_my_account(self, login_user):
         main_pages = MainPage(login_user)        
@@ -16,6 +18,7 @@ class TestRedirects:
         account_page = AccountPage(login_user)
         assert account_page.check_profile_button_displayed()
 
+    @allure.title('Test redirect from login page to main page')
     @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_constructor_button_redirect(self, driver):
         main_pages = MainPage(driver)   
@@ -24,6 +27,7 @@ class TestRedirects:
         main_pages.wait_for_page_change(data.MAIN_PAGE_URL)
         assert main_pages.check_assemble_burger_heading()
 
+    @allure.title('Test redirect from main page to order feed page')
     @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_constructor_order_feed_redirect(self, driver):
         main_pages = MainPage(driver)   
@@ -33,6 +37,7 @@ class TestRedirects:
         order_feed = OrderFeedPage(driver)
         assert order_feed.check_order_feed_heading()
 
+    @allure.title('Test redirect from login page to reset password page')
     @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_reset_password_redirect(self, driver):
         login_page = LoginPage(driver)
@@ -42,4 +47,3 @@ class TestRedirects:
         reset_password_page.wait_for_page_change(data.RESET_PASSWORD_URL)
 
         assert reset_password_page.check_reset_password_button_present()
-        
