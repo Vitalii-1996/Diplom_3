@@ -63,6 +63,7 @@ class MainPage(BasePage):
     def get_order_id(self):
         locator = MainPageLocators.POPUP_HEADER
         self.wait_element_to_be_changed(locator, data.ORDER_ID_PLACEHOLDER)
+        self.wait_element_disappear(MainPageLocators.POPUP_HEADER_PLACEHOLDER)
         return self.get_text_from_element(locator)
     
     @allure.step('create new order')
