@@ -1,8 +1,8 @@
 MAIN_PAGE_URL = 'https://stellarburgers.nomoreparties.site/'
-LOGIN_PAGE_URL = 'https://stellarburgers.nomoreparties.site/login'
-RESET_PASSWORD_URL = 'https://stellarburgers.nomoreparties.site/forgot-password'
-MY_ACCOUNT_URL = 'https://stellarburgers.nomoreparties.site/account/profile'
-ORDER_FEED_URL = 'https://stellarburgers.nomoreparties.site/feed'
+LOGIN_PAGE_URL = f'{MAIN_PAGE_URL}login'
+RESET_PASSWORD_URL = f'{MAIN_PAGE_URL}forgot-password'
+MY_ACCOUNT_URL = f'{MAIN_PAGE_URL}account/profile'
+ORDER_FEED_URL = f'{MAIN_PAGE_URL}feed'
 
 TEST_EMAIL = 'qwert1234@mail.com'
 TEST_PASSWORD = '87654321QWERTY'
