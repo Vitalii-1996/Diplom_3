@@ -12,7 +12,6 @@ class TestMainPage:
             'ingredient_index',
             [random.randint(0,data.INGREDIENT_COUNT)]
     )
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_ingredient_popup(self, driver, ingredient_index):
         main_pages = MainPage(driver)   
         main_pages.go_to_url(data.MAIN_PAGE_URL)     
@@ -24,7 +23,6 @@ class TestMainPage:
             'ingredient_index',
             [random.randint(0,data.INGREDIENT_COUNT)]
     )
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_close_ingredient_popup(self, driver, ingredient_index):
         main_pages = MainPage(driver)   
         main_pages.go_to_url(data.MAIN_PAGE_URL)     
@@ -38,7 +36,6 @@ class TestMainPage:
             'ingredient_index',
             [random_ingerdient_index()]
     )
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_add_ingredient_increase_counter(self, driver, ingredient_index):
         main_pages = MainPage(driver)   
         main_pages.go_to_url(data.MAIN_PAGE_URL)
@@ -54,7 +51,6 @@ class TestMainPage:
                 [random_bun_index(), [random_ingerdient_index()]]
             ]
     )
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_place_order(self, login_user, bun_index, ingredients):
         main_pages = MainPage(login_user)   
         order = main_pages.create_new_order(bun_index, ingredients)

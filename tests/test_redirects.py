@@ -10,7 +10,6 @@ import allure
 
 class TestRedirects:
     @allure.title('Test redirect from main page to account page')
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_redirect_to_my_account(self, login_user):
         main_pages = MainPage(login_user)        
         main_pages.click_my_account()
@@ -19,7 +18,6 @@ class TestRedirects:
         assert account_page.check_profile_button_displayed()
 
     @allure.title('Test redirect from login page to main page')
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_constructor_button_redirect(self, driver):
         main_pages = MainPage(driver)   
         main_pages.go_to_url(data.LOGIN_PAGE_URL)     
@@ -28,7 +26,6 @@ class TestRedirects:
         assert main_pages.check_assemble_burger_heading()
 
     @allure.title('Test redirect from main page to order feed page')
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_constructor_order_feed_redirect(self, driver):
         main_pages = MainPage(driver)   
         main_pages.go_to_url(data.MAIN_PAGE_URL)     
@@ -38,7 +35,6 @@ class TestRedirects:
         assert order_feed.check_order_feed_heading()
 
     @allure.title('Test redirect from login page to reset password page')
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_reset_password_redirect(self, driver):
         login_page = LoginPage(driver)
         login_page.go_to_url(data.LOGIN_PAGE_URL)

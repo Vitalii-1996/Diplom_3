@@ -7,8 +7,7 @@ from locators.main_page_locators import MainPageLocators
 import pytest
 import data
 
-
-@pytest.fixture
+@pytest.fixture(params=["Chrome", "Firefox"])
 def driver(request):
     mode = request.param
     if mode == 'Chrome':

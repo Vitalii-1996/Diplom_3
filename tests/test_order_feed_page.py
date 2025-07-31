@@ -10,7 +10,6 @@ import allure
 
 class TestAccountPage:
     @allure.title('Test order details modal open')
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_order_feed_modal_details(self, driver):
         order_feed = OrderFeedPage(driver)   
         order_feed.go_to_url(data.ORDER_FEED_URL)     
@@ -21,7 +20,6 @@ class TestAccountPage:
     @allure.description(
         'Check that order from user order history is displayed on the order feed page.'
     )
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_order_feed_order_from_history_present(self, login_user):
         main_page = MainPage(login_user)
         main_page.click_my_account()
@@ -43,7 +41,6 @@ class TestAccountPage:
                 [random_bun_index(), [random_ingerdient_index()]]
             ]
     )
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_order_feed_total_counter(self, login_user, bun_index, ingredients, counter_locator):
         main_pages = MainPage(login_user)
         order_feed = OrderFeedPage(login_user)
@@ -62,7 +59,6 @@ class TestAccountPage:
                 [random_bun_index(), [random_ingerdient_index()]]
             ]
     )
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_order_feed_new_order_in_progress(self, login_user, bun_index, ingredients):
         main_pages = MainPage(login_user)
         order_feed = OrderFeedPage(login_user)

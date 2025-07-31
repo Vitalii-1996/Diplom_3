@@ -7,7 +7,6 @@ import allure
 
 class TestAccountPage:
     @allure.title('Go to accounts histor and check history section is active')
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_history(self, login_user):
         main_pages = MainPage(login_user) 
         main_pages.click_my_account()
@@ -16,7 +15,6 @@ class TestAccountPage:
         assert account_page.check_order_history_button_active()
 
     @allure.title('Test user success logout')
-    @pytest.mark.parametrize("driver", ["Chrome", "Firefox"], indirect=True)
     def test_logout(self, login_user):
         main_pages = MainPage(login_user) 
         main_pages.click_my_account()
